@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soft Hands, Strong Heart</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Cinzel for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Source Sans Pro for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>     
+    <nav class="navbar">
+  <div class="logo">
+    <a href="index.html" class="logo-link"> 
+      <img src="images/logo.png" alt="Soft Hands, Strong Heart Logo">
+    </a>
+  </div>
+      <div class="nav-links">
+        
+        <a href="reflections/index.html">Reflections</a>
+        <a href="practical-tips/index.html">Practical Tips</a>
+        <a href="anticipatory-grief/index.html">Anticipatory Grief</a>
+        <a href="self-care/index.html">Self Care</a>
+        <a href="resources-and-products/index.html">Resources & Products</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Soft Hands, Strong Heart</h1>
+        <p class="tagline">Reflections, tips, and gentle guidance for caregivers</p>
+        <a href="reflections/index.html" class="cta-button">Start Reading</a>
+      </div>
+    </section>
+  </header>
+
+  <!-- Intro Section -->
+  <section id="intro">
+    <h2>Welcome</h2>
+    <p>
+      Welcome to <strong>Soft Hands, Strong Heart</strong>, a sanctuary for caregivers walking the tender path of love, loss, and devotion. My name is Rachel and I found myself on this unexpected journey ten years ago when my partner was first diagnosed with fronto temporal dementia. Some days, I still wonder how we found ourselves on this path — yet here we are, learning, stumbling, and finding our way through.
+
+This is a space where caregiving is honored not only as a responsibility, but as a sacred journey — one that weaves together exhaustion and courage, grief and joy, despair and moments of quiet grace.
+
+Here you’ll find reflections, gentle guidance, and practical tips, alongside spiritual nourishment: reminders that your story is unique, that your love matters, and that even the smallest acts of care hold a sacred beauty.
+
+Whether you are tending a loved one through dementia or another long illness, may these words, practices, and offerings help you feel less alone. Think of this place as a companion — somewhere to pause, breathe, and remember that caregiving is not just survival, but also a path of meaning, healing, and deep connection.
+
+Your hands are strong. Your heart is resilient. And here, you are held.
+    </p>
+  </section>
+
+<!-- Inspirational Quotes Section -->
+<section id="inspirational-quotes-carousel">
+  <h2>Words to Lift the Heart</h2>
+
+  <div class="quote-carousel">
+    <button class="prev">‹</button>
+
+    <div class="quote-track">
+      <div class="quote-card">
+        <p class="quote">“I wish I could show you, when you are lonely or in darkness, the astonishing light of your own being.”</p>
+        <p class="author">— Hafiz</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Try to accept the changing seasons of your heart, even as you have always accepted the seasons changing over your fields.”</p>
+        <p class="author">— Rumi</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Love is not just about what we feel; it is about what we do.”</p>
+        <p class="author">— Unknown</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“What is done in love is done well.”</p>
+        <p class="author">— Vincent Van Gogh</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“The wound is the place where the Light enters you.”</p>
+        <p class="author">— Rumi</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“At the end of the day, we can endure much more than we think we can.”</p>
+        <p class="author">— Frida Kahlo</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Do not lose heart, we were made for these times.”</p>
+        <p class="author">— Clarissa Pinkola Estés</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“When we are no longer able to change a situation, we are challenged to change ourselves.”</p>
+        <p class="author">— Viktor Frankl</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Ring the bells that still can ring. Forget your perfect offering. There is a crack, a crack in everything — that’s how the light gets in.”</p>
+        <p class="author">— Leonard Cohen</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Sometimes the bravest thing you can do is just show up.”</p>
+        <p class="author">— Brené Brown</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Your heart knows the way. Run in that direction.”</p>
+        <p class="author">— Rumi</p>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote">“Courage doesn’t always roar. Sometimes courage is the quiet voice at the end of the day saying, ‘I will try again tomorrow.’”</p>
+        <p class="author">— Mary Anne Radmacher</p>
+      </div>
+    </div>
+
+    <button class="next">›</button>
+  </div>
+</section>
+
+
+<script>
+  const track = document.querySelector(".quote-carousel .quote-track");
+const cards = document.querySelectorAll(".quote-carousel .quote-card");
+const prevBtn = document.querySelector(".quote-carousel .prev");
+const nextBtn = document.querySelector(".quote-carousel .next");
+
+let index = 0;
+const visible = 3; // number of quotes visible at once
+const total = cards.length;
+
+function updateSlide() {
+  track.style.transform = `translateX(-${(100 / visible) * index}%)`;
+}
+
+nextBtn.addEventListener("click", () => {
+  index = (index + visible) % total;  // loop forward
+  updateSlide();
+});
+
+prevBtn.addEventListener("click", () => {
+  index = (index - visible + total) % total; // loop backward
+  updateSlide();
+});
+
+</script>
+
+
+
+
+
+  <!-- Recent Posts -->
+  <section id="recent-posts">
+    <h2>Recent Posts</h2>
+    <div class="post-grid home">
+
+      <article class="post-card">
+        <h3>Taking Ownership<br>as a Caregiver</h3>
+        <p>I’ve been caregiving for over ten years, and for most of that time, I relied heavily on advice, guidance, and authority from others— doctors, nurses, caregivers, family, and friends. I thought that if I listened carefully, followed their instructions, and did what “experts” suggested, I would be doing the right thing for my partner and for myself....</p>
+        <a href="reflections/taking-ownership.html" class="read-more">Read more</a>
+      </article>
+
+      <article class="post-card">
+        <h3>Loving while Letting go</h3>
+        <p>One of the most tender and complicated parts of caregiving is living with a slow goodbye. With dementia, the changes don’t happen all at once. They come gradually, like waves pulling someone you love further and further from shore. You can still see them, still touch them, still love them—yet in quiet ways, you are already beginning to grieve...</p>
+        <a href="anticipatory-grief/loving-while-letting-go.html" class="read-more">Read more</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Soft Hands, Strong Heart. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
