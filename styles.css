@@ -141,6 +141,55 @@ background: rgba(0, 0, 0, 0.3);
 }
 
 
+/* Mystical Blockquote Styling */
+blockquote {
+  background-color: rgba(255, 244, 230, 0.9); /* soft translucent cream */
+  border-left: 6px solid #b5863f; /* accent color */
+  margin: 30px auto;
+  padding: 25px 35px;
+  font-style: italic;
+  color: #6a4b2d;
+  border-radius: 12px;
+  text-align: center; /* center the text */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 20px rgba(181, 134, 63, 0.2); /* soft glow */
+  position: relative;
+  max-width: 800px;
+  font-size: 1.1em;
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote::before {
+  content: open-quote;
+  font-size: 3rem;
+  position: absolute;
+  left: 15px;
+  top: -10px;
+  color: #b5863f;
+}
+
+blockquote::after {
+  content: close-quote;
+  font-size: 3rem;
+  position: absolute;
+  right: 15px;
+  bottom: -10px;
+  color: #b5863f;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold; /* bold author */
+  color: #9f7d45;
+  font-style: normal;
+}
+blockquote cite {
+  display: block;       /* puts the author on its own line */
+  margin-top: 15px;     /* space from quote */
+  font-weight: bold;    /* makes the author bold */
+  color: #9f7d45;       /* golden/mystical color */
+  font-style: normal;    /* override italic from blockquote */
+}
 
 
 /* Sections */
