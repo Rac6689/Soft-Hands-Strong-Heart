@@ -139,6 +139,33 @@ background: rgba(0, 0, 0, 0.3);
 .cta-button:hover {
   background-color: #9f7d45;
 }
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.book-entry {
+  background-color: #fff8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.book-entry h3 {
+  color: #b5863f;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.book-entry p {
+  color: #6a4b2d;
+  font-size: 1em;
+  line-height: 1.6;
+  text-align: center;
+}
 
 
 /* Mystical Blockquote Styling */
