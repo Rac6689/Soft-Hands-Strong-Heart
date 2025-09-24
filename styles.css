@@ -168,6 +168,17 @@ background: rgba(0, 0, 0, 0.3);
 }
 
 
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.wave-divider svg {
+  width: 200%;
+  animation: wave 15s linear infinite;
+}
+
+
 /* Mystical Blockquote Styling */
 blockquote {
   background-color: rgba(255, 244, 230, 0.9); /* soft translucent cream */
@@ -311,18 +322,7 @@ article h2, article h3 {
   flex-grow: 1; /* 🔑 ensures text always shows, even in tall boxes */
 }
 
-#inspirational-quotes {
-  background-color: #fff3e6; /* soft cream */
-  padding: 60px 20px;
-  text-align: center;
-}
 
-#inspirational-quotes h2 {
-  font-family: 'Cinzel', serif;
-  font-weight: 400;
-  color: #b5863f;
-  margin-bottom: 40px;
-}
 
 .quote-grid {
   display: grid;
@@ -344,17 +344,23 @@ article h2, article h3 {
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
+/* safe wrapping for long words/quotes */
 .quote {
-  font-size: 1.1em;
+  font-size: 1.05em;
   color: #6a4b2d;
   margin-bottom: 12px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
+/* small author style */
 .author {
   font-size: 0.9em;
   font-weight: bold;
   color: #9f7d45;
 }
+
 
 .video-grid {
   display: flex;
@@ -374,6 +380,7 @@ article h2, article h3 {
 }
 
 .quote-carousel {
+  --visible:3;
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
@@ -382,17 +389,24 @@ article h2, article h3 {
 
 .quote-carousel .quote-track {
   display: flex;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.45s ease;
+  will-change: transform
+
 }
 
 .quote-carousel .quote-card {
-  flex: 0 0 33.3333%; /* show 3 cards at a time */
-  padding: 20px;
+  flex: 0 0 calc(100% / var(--visible));
   box-sizing: border-box;
-  text-align: center; /* centers text horizontally */
-  display: flex;       /* make it a flex container */
-  flex-direction: column; /* stack quote and author vertically */
-  justify-content: center; /* centers content vertically */
+  padding: 20px;
+  min-width: 0; /* 🔑 allows content to wrap and the item to shrink properly */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff8f0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-style: italic;
 }
 
 .quote-carousel button.prev,
@@ -412,9 +426,10 @@ article h2, article h3 {
 .quote-carousel button.prev { left: 0; }
 .quote-carousel button.next { right: 0; }
 
-.quote-carousel button.prev:hover,
-.quote-carousel button.next:hover {
-  color: #000;
+.quote-carousel button[disabled] {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
 }
 
 
