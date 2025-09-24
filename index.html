@@ -58,6 +58,7 @@ Your hands are strong. Your heart is resilient. And here, you are held.
     </p>
   </section>
 
+
 <!-- Inspirational Quotes Section -->
 <section id="inspirational-quotes-carousel">
   <h2>Words to Lift the Heart</h2>
@@ -65,11 +66,15 @@ Your hands are strong. Your heart is resilient. And here, you are held.
   <div class="quote-carousel">
     <button class="prev">‹</button>
 
+   
+
     <div class="quote-track">
       <div class="quote-card">
         <p class="quote">“I wish I could show you, when you are lonely or in darkness, the astonishing light of your own being.”</p>
         <p class="author">— Hafiz</p>
       </div>
+
+    
 
       <div class="quote-card">
         <p class="quote">“Try to accept the changing seasons of your heart, even as you have always accepted the seasons changing over your fields.”</p>
@@ -80,6 +85,8 @@ Your hands are strong. Your heart is resilient. And here, you are held.
         <p class="quote">“Love is not just about what we feel; it is about what we do.”</p>
         <p class="author">— Unknown</p>
       </div>
+
+     
 
       <div class="quote-card">
         <p class="quote">“What is done in love is done well.”</p>
@@ -106,6 +113,7 @@ Your hands are strong. Your heart is resilient. And here, you are held.
         <p class="author">— Viktor Frankl</p>
       </div>
 
+      
       <div class="quote-card">
         <p class="quote">“Ring the bells that still can ring. Forget your perfect offering. There is a crack, a crack in everything — that’s how the light gets in.”</p>
         <p class="author">— Leonard Cohen</p>
@@ -133,30 +141,42 @@ Your hands are strong. Your heart is resilient. And here, you are held.
 
 
 <script>
-  const track = document.querySelector(".quote-carousel .quote-track");
-const cards = document.querySelectorAll(".quote-carousel .quote-card");
-const prevBtn = document.querySelector(".quote-carousel .prev");
-const nextBtn = document.querySelector(".quote-carousel .next");
+const track = document.querySelector('.quote-track');
+const cards = document.querySelectorAll('.quote-card');
+const prevBtn = document.querySelector('.quote-carousel .prev');
+const nextBtn = document.querySelector('.quote-carousel .next');
 
-let index = 0;
-const visible = 3; // number of quotes visible at once
+const visible = parseInt(getComputedStyle(document.querySelector('.quote-carousel')).getPropertyValue('--visible'));
 const total = cards.length;
+let index = 0;
 
-function updateSlide() {
-  track.style.transform = `translateX(-${(100 / visible) * index}%)`;
+function updateCarousel() {
+  const offset = -(index * (100 / visible));
+  track.style.transform = `translateX(${offset}%)`;
+  
+  // enable/disable buttons
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = index >= total - visible;
 }
 
-nextBtn.addEventListener("click", () => {
-  index = (index + visible) % total;  // loop forward
-  updateSlide();
+nextBtn.addEventListener('click', () => {
+  if (index < total - visible) {
+    index++;
+    updateCarousel();
+  }
 });
 
-prevBtn.addEventListener("click", () => {
-  index = (index - visible + total) % total; // loop backward
-  updateSlide();
+prevBtn.addEventListener('click', () => {
+  if (index > 0) {
+    index--;
+    updateCarousel();
+  }
 });
+
+updateCarousel(); // initial state
 
 </script>
+
 
 
 
@@ -180,6 +200,8 @@ prevBtn.addEventListener("click", () => {
       </article>
     </div>
   </section>
+
+
 
   <!-- Footer -->
   <footer>
